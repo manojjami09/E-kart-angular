@@ -1,0 +1,26 @@
+<nav class="navbar">
+    
+    <div class="logo">
+        <h1 class="logo-name">E-Cart</h1>
+    </div>
+    <div class="right-bar">
+        <div class="icons">
+            <i class="fa-brands fa-facebook-f"></i>
+            <i class="fa-brands fa-instagram"></i>
+            <i class="fa-brands fa-twitter"></i>
+            <i class="fa-brands fa-pinterest-p"></i>
+        </div>
+        <div class="filter-container">
+            <select [(ngModel)]="stockFilter" type="options" name="filter" (change)="onFilterChange()" class="filter-select">
+                <option value="all">All Products</option>
+                <option value="in">In Stock</option>
+                <option value="low">Low Stock</option>
+            </select>
+        </div>
+        <div class="login">
+            <button class="nav-button">Login</button>
+        </div>
+        
+        
+    </div>  
+</nav>

@@ -1,0 +1,12 @@
+<app-navbar (stockFilterChange)="onStockFilterChange($event)" (searchChange)="onSearchChange($event)"></app-navbar>
+<h2>Product List</h2>
+<div class="products-container">
+  
+    <app-product-card [products]="filteredProducts"></app-product-card>
+  
+</div>
+
+<div *ngIf="products.length === 0">
+  No products available.
+</div>
+

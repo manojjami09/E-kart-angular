@@ -1,0 +1,57 @@
+<div class="">
+    <input type="text" placeholder="Search..." class="search-bar" [(ngModel)]="searchText" />
+</div>
+<div class="cart-btn">
+    <button class="nav-button" (click)="onToggleCart()">{{!showCart ? "My Cart  🛒" : "Home"}}</button>
+</div>
+
+<div class="cards-container" *ngIf="!showCart" >
+  <!-- First image -->
+   <div *ngFor="let product of products" class="card" >
+      <div *ngIf="product.title.toLowerCase().includes(searchText.toLowerCase()) || product.brand.toLowerCase().includes(searchText.toLowerCase())">
+   
+        <img [src]="product.images[0]" class="card-img-top" alt="{{ product.title }}" appZoom/>
+
+        <div class="card-body">
+          <!-- <p class="card-text">{{product.id}}</p> -->
+          <p class="card-title">{{ product.title }}</p>
+          <p class="card-brand">{{product.brand}}</p>
+          <p class="card-price">Price: ₹{{ product.price }}</p>
+          <div class="">
+            <p>
+              <ng-container *ngIf="expandedId === product.id; else shortDesc">
+                {{ product.description }}
+              </ng-container>
+              <ng-template #shortDesc>
+                {{ product.description | slice: 0: 60 }}...
+                
+              </ng-template>
+              <button (click)="toggleDescription(product.id)" class="shows-btn">
+                  {{ expandedId === product.id ? 'Less Details ' : 'More Details ˅' }}
+                </button>
+            </p>
+            
+          </div>
+
+          <p class="card-category">{{product.category}}</p>
+          <p class="card-stock" [appStockHighlight]="product.stock"><span class="text">only</span> {{product.stock}} <span class="text">Items left</span></p>
+        
+          <div class="mt-2 d-flex gap-2">
+            <img *ngFor="let img of product.images" [src]="img" width="50" height="50" alt="{{ product.title }}" class="border rounded" appZoom />
+          </div>
+          <div class="add-cart">
+            <button class="card-button" (click)="addToCart(product)">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+</div>
+
+<div class="cart-cont">
+  <app-cart
+    *ngIf="showCart"
+    [cartItems]="cartItems">
+    (toggleCart)="onToggleCart()"
+  </app-cart>
+</div>

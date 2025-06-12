@@ -1,0 +1,122 @@
+/* Card container */
+.cards-container{
+    display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+}
+.card {
+  
+  border: 0px solid #ddd;
+  border-radius: 10px;
+  width: 25%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  
+  margin-bottom: 10px;
+}
+
+
+
+/* Image styles */
+.card-img-top {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* Card body padding */
+.card-body {
+  padding: 1rem;
+}
+
+/* Title and text */
+.card-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.card-text {
+  font-size: 0.95rem;
+  margin-bottom: 0.25rem;
+}
+.card-brand{
+    font-size: 1rem;
+    font-weight: bold;
+}
+.card-price{
+    font-size: 1rem;
+    font-weight: bold;
+}
+.card-button{
+  padding: 7px;
+  padding-left: 15px;
+  padding-right: 15px;
+  border-radius: 10px;
+  border-width: 0px;
+  background-color: grey;
+  color: white;
+}
+.add-cart{
+  margin-top: 1rem;
+  text-align: center;
+}
+.card-stock{
+  font-weight: bold;
+  font-size: 0.99rem;
+}
+
+/* In-stock/out-of-stock text */
+.text-success {
+  color: green;
+}
+.text{
+  color: black;
+  font-weight: 500;
+}
+
+.text-orange {
+  color: orange;
+}
+.red{
+  color: red;
+}
+.shows-btn{
+  margin-top: -1rem;
+  margin-bottom: 10px;
+  background-color: white;
+  border-width: 0px;
+  font-weight: 500;
+}
+.card-category{
+  color: green;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+.border {
+  border: 1px solid #ccc;
+}
+
+.rounded {
+  border-radius: 5px;
+}
+
+.mt-2 {
+  margin-top: 0.5rem;
+}
+.cart-btn{
+  width:98vw;
+  text-align: right;  
+}
+.nav-button{
+  border-width: 0px;
+  padding: 7px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 10px;
+  background-color: black;
+  color: white;
+}
+.cart-cont{
+  width: 100%;
+}

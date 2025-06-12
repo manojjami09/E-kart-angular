@@ -1,0 +1,10 @@
+h2{
+    text-align: center;
+}
+
+.products-container{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem; /* spacing between items */
+  padding: 1rem; /* don't shrink the card */
+}

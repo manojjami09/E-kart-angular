@@ -1,0 +1,35 @@
+
+<h3>Your Cart</h3>
+<div class="cart-container" *ngIf="cartItems.length > 0; else emptyCart">
+    
+    <div *ngFor="let product of cartItems" class="cart">
+
+        <img [src]="product.images[0]" class="card-img-top" alt="{{ product.title }}" />
+
+        <div class="card-body">
+            <!-- <p class="card-text">{{product.id}}</p> -->
+            <p class="card-title">{{ product.title }}</p>
+            <p class="card-brand">{{product.brand}}</p>
+            <p class="card-price">Price: ₹{{ product.price }}</p>
+            <p class="card-text">{{product.description}}</p>
+            <p class="card-text">{{product.category}}</p>
+            
+            <!-- <p class="card-text" [ngClass]="product.availabilityStatus ? 'text-success' : 'text-danger'">
+            {{ product.inStock ? 'In Stock' : 'Out of Stock' }}
+            </p> -->
+
+            <!-- Optional: Display all images in a row -->
+            <div class="mt-2 d-flex gap-2">
+            <img *ngFor="let img of product.images" [src]="img" width="50" height="50" alt="{{ product.title }}" class="border rounded" />
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<ng-template #emptyCart>
+    <div class="empty">
+        <p class="em">Cart is Empty,<br/> Add items to your cart.</p>
+    </div>
+</ng-template>
