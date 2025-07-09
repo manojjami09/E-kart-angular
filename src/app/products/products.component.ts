@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { ProductsService } from '../products.service';
 import { ProductCardComponent } from '../product-card/product-card.component';
 import { NavbarComponent } from '../navbar/navbar.component';
+import { Product } from '../product.model';
+
 
 
 @Component({
@@ -14,13 +16,22 @@ import { NavbarComponent } from '../navbar/navbar.component';
   styleUrl: './products.component.css'
 })
 export class ProductsComponent implements OnInit {
-  products:{id: number, title: string, price: number, description: string, category: string,brand: string, availabilityStatus:string, stock:number,images: string[] }[] =[];
+  products: Product[] = [];
   filteredProducts = this.products;
   constructor(private productsService: ProductsService){}
+  
   ngOnInit(): void{
-
-    this.products = this.productsService.products;
-    this.filteredProducts = this.products;
+    this.productsService.getProducts().subscribe({
+      next: (data) => {
+        this.products = data;
+        this.filteredProducts = this.products;
+      },
+      error: (error) => {
+        console.error('Error fetching products:', error);
+      }
+    })
+    // this.products = this.productsService.products;
+    // this.filteredProducts = this.products;
   }
   onStockFilterChange(filter: string) {
     if (filter === 'in') {

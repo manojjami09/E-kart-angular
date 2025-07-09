@@ -11,5 +11,9 @@ import { FormsModule } from '@angular/forms';
 export class CartComponent {
   @Input() cartItems: {id: number, title: string, price: number, description: string, category: string,brand: string, availabilityStatus:string, stock:number,images: string[]}[]=[];
   
-
+  cartLength!: number;
+  
+  ngOnChanges() {
+    this.cartLength = this.cartItems.length;
+  }
 }

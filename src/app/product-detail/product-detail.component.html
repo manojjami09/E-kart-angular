@@ -1,0 +1,49 @@
+
+
+<div *ngIf="product" class="product-detail-container">
+    <app-navbar></app-navbar>
+    <div class="cont">
+        <div class="img-cont">
+            <img [src]="product.images[0]" class="card-img-top" alt="{{ product.title }}" appZoom/>
+            <div class="mt-2 d-flex gap-2">
+                <img *ngFor="let img of product.images" [src]="img" width="50" height="50" alt="{{ product.title }}" class="border rounded" appZoom />
+            </div>
+        </div>
+
+        <div class="card-body">
+            <!-- <p class="card-text">{{product.id}}</p> -->
+            <p class="card-title">{{ product.title }}</p>
+            <p class="card-brand">{{product.brand}}</p>
+            <p class="card-price">₹{{ product.price }}</p>
+
+            <div class="">
+                <p>
+                    <ng-container *ngIf="expandedId === product.id; else shortDesc" class="card-text">
+                    {{ product.description }}
+                    </ng-container>
+                    <ng-template #shortDesc class="card-text">
+                    {{ product.description | slice: 0: 60 }}...
+                    
+                    </ng-template>
+                    <button (click)="toggleDescription(product.id)" class="shows-btn">
+                        {{ expandedId === product.id ? 'Less Details ' : 'More Details ˅' }}
+                    </button>
+                </p>
+            
+            </div>
+
+            <p class="card-category">{{product.category}}</p>
+            <p class="card-stock" [appStockHighlight]="product.stock"><span class="text">only</span> {{product.stock}} <span class="text">Items left</span></p>
+        
+            
+            <div class="add-cart">
+                <button class="cart-button">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+</div>
+      
+
+<div *ngIf="!product">
+  <p>Loading product details...</p>
+</div>

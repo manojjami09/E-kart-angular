@@ -2,13 +2,13 @@
     <input type="text" placeholder="Search..." class="search-bar" [(ngModel)]="searchText" />
 </div>
 <div class="cart-btn">
-    <button class="nav-button" (click)="onToggleCart()">{{!showCart ? "My Cart  🛒" : "Home"}}</button>
+    <button class="nav-button" (click)="onToggleCart()">{{!showCart ? "My Cart  🛒" : "Back"}}</button>
 </div>
 
 <div class="cards-container" *ngIf="!showCart" >
   <!-- First image -->
    <div *ngFor="let product of products" class="card" >
-      <div *ngIf="product.title.toLowerCase().includes(searchText.toLowerCase()) || product.brand.toLowerCase().includes(searchText.toLowerCase())">
+      <div [routerLink] = "['/products',product.id]" style="cursor:pointer;" *ngIf="product.title.toLowerCase().includes(searchText.toLowerCase()) || product.brand.toLowerCase().includes(searchText.toLowerCase())">
    
         <img [src]="product.images[0]" class="card-img-top" alt="{{ product.title }}" appZoom/>
 
@@ -55,3 +55,4 @@
     (toggleCart)="onToggleCart()"
   </app-cart>
 </div>
+<router-outlet></router-outlet>
